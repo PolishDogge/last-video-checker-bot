@@ -1,9 +1,7 @@
 import discord
 from discord.ext import commands, tasks
 from check import check
-from twitchcheck import isLive
-
-key = ''
+from options import DISCORD_KEY, DISCORD_CHANNEL
 
 # make the intents read messages, members, and guilds 
 intents = discord.Intents.default()
@@ -16,24 +14,28 @@ async def on_ready():
     print('We have logged in as {0.user}'.format(client))
 
 @client.command()
-async def get_channel(ctx):
-    print(ctx.channel)
-    return
-
-@client.command()
 async def delete(ctx):
     await ctx.channel.purge(limit=100)
 
+amt = 0
+
 @tasks.loop(seconds=10)
 async def check_channel():
-    channel_info = check()
-    if channel_info is False:
+    global amt
+    if amt == 0:    # lazy implementation of skipping first check
+        amt += 1    # otherwise resoults in a instant crash :)
         return
-    channel = client.get_channel()
-    await channel.send(channel_info)
-    print("Message sent.")
+
+    channel_info = check()
+    if not channel_info:
+        return
+
+    channel = client.get_channel(int(DISCORD_CHANNEL))
+    if channel_info:
+        await channel.send(channel_info)
+        print("Message sent.")
 
 check_channel.start()
 
 # Run the bot client
-client.run(key)
+client.run(DISCORD_KEY)
