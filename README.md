@@ -10,21 +10,9 @@ Discord bot token: You need to create a Discord bot and obtain its token. Replac
 
 Installed dependencies: Make sure you have the necessary dependencies installed. You can install them using pip:
 ```
-pip install google-api-python-client discord.py
+pip install google-api-python-client 
+pip install discord.py
 ```
-## Code Explanation
-The code is divided into two parts: YouTube API integration and Discord bot setup.
-
-### YouTube API Integration
-
-Set up the YouTube API client:
-```
-DEVELOPER_KEY = ""  # Replace with your YouTube Data API v3 key
-YOUTUBE_API_SERVICE_NAME = "youtube"
-YOUTUBE_API_VERSION = "v3"
-youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION, developerKey=DEVELOPER_KEY)
-```
-Define the YouTube channel ID to monitor:
-```
-channel_id = "UCpeGzDObn7SZPcMmY-PQzMQ"  # Replace with the desired YouTube channel ID
-```
+## Options
+The options aren't really options, they just contain the keys/channels you want. 
+The code supports multiple channels at once.
