@@ -1,7 +1,7 @@
 # YouTube Channel Watcher Bot
-This code sets up a bot that monitors a specific YouTube channel for new video uploads and sends a notification to a Discord channel when a new video is detected. It utilizes the YouTube Data API v3 and the Discord.py library.
+This code sets up a bot that monitors a specific YouTube channel for new video uploads and sends a notification to a Discord channel when a new video is detected.
 
-## Prerequisites
+## Requirements
 Before running this code, make sure you have the following:
 
 Google API key: You need to obtain a YouTube Data API v3 key. Replace the DEVELOPER_KEY variable with your own API key. Instructions on obtaining an API key can be found in the YouTube API documentation.
@@ -16,3 +16,5 @@ pip install discord.py
 ## Options
 The options aren't really options, they just contain the keys/channels you want. 
 The code supports multiple channels at once.
+
+### **Free to use**
